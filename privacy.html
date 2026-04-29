@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — SporkBots</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0f13;--surface:#16181f;--surface2:#1c1e27;--border:#252830;--accent:#5865f2;--accent2:#eb459e;--muted:#5a5e72;--text:#c9cde0;--heading:#eef0f8;--tag-bg:#1e2030;--green:#3ba55d;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.75;min-height:100vh;}
+header{position:sticky;top:0;z-index:100;background:rgba(14,15,19,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);height:60px;}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+.logo-icon{width:30px;height:30px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:15px;}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--heading);}
+nav{display:flex;gap:4px;align-items:center;}
+nav a{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;text-decoration:none;color:var(--muted);padding:.35rem .8rem;border-radius:6px;border:1px solid transparent;transition:color .15s,border-color .15s,background .15s;letter-spacing:.04em;text-transform:uppercase;}
+nav a:hover,nav a.active{color:var(--heading);background:var(--tag-bg);border-color:var(--border);}
+.nav-divider{width:1px;height:18px;background:var(--border);margin:0 4px;}
+footer{border-top:1px solid var(--border);padding:1.8rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+.footer-links{display:flex;gap:1.2rem;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--text);}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+.hero{padding:clamp(3rem,7vw,5rem) clamp(1.5rem,5vw,4rem) 0;max-width:860px;margin:0 auto;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);color:var(--heading);line-height:1.08;letter-spacing:-.02em;margin-bottom:1rem;}
+.hero p{color:var(--muted);font-size:.9rem;max-width:500px;font-weight:300;}
+.updated-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.3rem .75rem;font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+.updated-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;box-shadow:0 0 6px rgba(59,165,93,.5);}
+
+.tabs-wrapper{max-width:860px;margin:3rem auto 0;padding:0 clamp(1.5rem,5vw,4rem);}
+.bot-switcher{display:flex;gap:.6rem;margin-bottom:1.5rem;}
+.bot-switch-btn{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s;font-family:'Syne',sans-serif;font-weight:600;font-size:.82rem;color:var(--muted);}
+.bot-switch-btn:hover{color:var(--text);}
+.bot-switch-btn.active-mp3{border-color:#e8803a;background:rgba(232,128,58,.08);color:var(--heading);}
+.bot-switch-btn.active-alerts{border-color:#7c3aed;background:rgba(124,58,237,.1);color:var(--heading);}
+.bot-icon{width:22px;height:22px;border-radius:5px;display:grid;place-items:center;font-size:11px;}
+.bot-icon.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
+.bot-icon.alerts{background:linear-gradient(135deg,#4a1a8c,#7c3aed,#f72585);}
+
+.tab-content{display:none;padding:0 0 5rem;animation:fadeUp .22s ease both;}
+.tab-content.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.doc h2{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--heading);margin:2.2rem 0 .6rem;letter-spacing:-.005em;display:flex;align-items:center;gap:.6rem;}
+.doc h2:first-child{margin-top:0;}
+.doc h2 .sec-num{font-family:'DM Mono',monospace;font-size:.66rem;font-weight:500;color:#e8803a;background:rgba(232,128,58,.1);border:1px solid rgba(232,128,58,.25);border-radius:4px;padding:.12rem .42rem;letter-spacing:.06em;}
+.doc h2 .sec-num.pink{color:var(--accent2);background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.2);}
+.doc p{margin-bottom:.8rem;}
+.doc p:last-child{margin-bottom:0;}
+.doc ul{margin:.5rem 0 .8rem;padding:0;list-style:none;}
+.doc ul li{position:relative;padding-left:1.3rem;margin-bottom:.35rem;color:var(--text);}
+
+.doc.alerts-doc ul li::before{color:#7c3aed;}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(88,101,242,.3);transition:color .15s;}
+.doc a:hover{color:#7b87f5;}
+.doc strong{color:var(--heading);font-weight:500;}
+.doc .subsection{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:1.3rem 0 .4rem;}
+.not-collected{background:rgba(59,165,93,.05);border:1px solid rgba(59,165,93,.15);border-radius:8px;padding:.8rem 1rem;margin:.5rem 0 .8rem;}
+.not-collected li::before{color:var(--green) !important;content:'✓' !important;}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">🍴</div>
+    <span class="logo-name">SporkBots</span>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="sporkmp3.html">SporkMP3</a>
+    <a href="sporkalerts.html">SporkAlerts</a>
+    <div class="nav-divider"></div>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html" class="active">Privacy</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">SporkBots — Legal</p>
+  <h1>Privacy Policy</h1>
+  <p>What we collect, why we collect it, and what we absolutely don't touch. Select a bot below.</p>
+  <div class="updated-badge">Last updated — April 26, 2026</div>
+</div>
+
+<div class="tabs-wrapper">
+  <div class="bot-switcher">
+    <button class="bot-switch-btn active-mp3" id="btn-mp3" onclick="switchBot('mp3')">
+      <div class="bot-icon mp3">🎵</div> SporkMP3
+    </button>
+    <button class="bot-switch-btn" id="btn-alerts" onclick="switchBot('alerts')">
+      <div class="bot-icon alerts">🗓</div> SporkAlerts
+    </button>
+  </div>
+
+  <!-- SPORKMP3 PRIVACY -->
+  <div class="tab-content active doc" id="content-mp3">
+
+    <h2><span class="sec-num">§1</span> What We Collect</h2>
+
+    <p class="subsection">Server data</p>
+    <ul>
+      <li>Server ID</li>
+      <li>Channel IDs where commands are used</li>
+      <li>Role IDs added to the whitelist</li>
+      <li>Server settings (autoplay, auto-disconnect, playback speed)</li>
+    </ul>
+
+    <p class="subsection">User data</p>
+    <ul>
+      <li>User IDs of blacklisted users</li>
+      <li>Display names of users who upload files (shown as "Requested by")</li>
+    </ul>
+
+    <p class="subsection">Audio files</p>
+    <ul>
+      <li><strong>Temporary files:</strong> deleted automatically after playback or inactivity</li>
+      <li><strong>Library files:</strong> stored permanently until manually deleted by a server admin</li>
+    </ul>
+
+    <h2><span class="sec-num">§2</span> What We Don't Collect</h2>
+    <ul class="not-collected">
+      <li>Message content (except bot mentions for file uploads)</li>
+      <li>Voice data or recordings</li>
+      <li>Personal information beyond Discord user/server IDs</li>
+      <li>Analytics or tracking data</li>
+    </ul>
+
+    <h2><span class="sec-num">§3</span> How Data Is Used</h2>
+    <ul>
+      <li><strong>Server settings:</strong> to remember your preferences across restarts</li>
+      <li><strong>User IDs:</strong> to enforce blacklists and display who requested tracks</li>
+      <li><strong>Audio files:</strong> to play them back in voice channels</li>
+    </ul>
+
+    <h2><span class="sec-num">§4</span> Where Data Is Stored</h2>
+    <p>All data is stored locally on the server hosting the bot. Nothing is shared with third parties.</p>
+
+    <h2><span class="sec-num">§5</span> Data Retention</h2>
+    <ul>
+      <li><strong>Server settings:</strong> kept until the bot is removed from your server</li>
+      <li><strong>Temporary audio files:</strong> deleted after inactivity (typically within hours)</li>
+      <li><strong>Library files:</strong> kept until a server admin deletes them with <code style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--accent);">/remove_sound</code></li>
+    </ul>
+
+    <h2><span class="sec-num">§6</span> Your Rights</h2>
+    <ul>
+      <li>Server admins can delete library files with <code style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--accent);">/remove_sound</code></li>
+      <li>Server admins can remove users from blacklists with <code style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--accent);">/blacklist remove</code></li>
+      <li>Removing the bot from your server stops all data collection for that server</li>
+    </ul>
+
+    <h2><span class="sec-num">§7</span> Third Parties</h2>
+    <p>SporkMP3 interacts only with Discord's API. Discord's own privacy practices are governed by <a href="https://discord.com/privacy" target="_blank">Discord's Privacy Policy</a>. No third-party analytics, advertising networks, or tracking services are used.</p>
+
+    <h2><span class="sec-num">§8</span> Children's Privacy</h2>
+    <p>SporkMP3 is not intended for users under 13 (or the minimum age required to use Discord in your country). We do not knowingly collect data from children below this age.</p>
+
+    <h2><span class="sec-num">§9</span> Contact</h2>
+    <p>For privacy questions or data requests, reach out via the <a href="https://discord.gg/kvrT4SsuG4" target="_blank">SporkMP3 support server</a>.</p>
+
+  </div>
+
+  <!-- SPORKALERTS PRIVACY -->
+  <div class="tab-content doc alerts-doc" id="content-alerts">
+
+    <h2><span class="sec-num pink">§1</span> Data We Collect</h2>
+    <p>SporkAlerts stores only the data required to deliver scheduled messages.</p>
+
+    <p class="subsection">Server (guild) data</p>
+    <ul>
+      <li>Server (guild) ID</li>
+      <li>Channel IDs where schedules are configured to post</li>
+      <li>Role IDs that have been granted scheduling permissions</li>
+      <li>The server's configured timezone</li>
+      <li>Whether the server has completed initial onboarding</li>
+    </ul>
+
+    <p class="subsection">Schedule data</p>
+    <ul>
+      <li>The text content of scheduled messages</li>
+      <li>Uploaded image attachments (stored as files on disk)</li>
+      <li>Schedule configuration: timing, intervals, target times, variant settings, embed settings, max-fire limits</li>
+      <li>Role IDs and user IDs configured to receive pings</li>
+      <li>The Discord user ID of the schedule creator</li>
+      <li>Timestamps of when schedules were created, last fired, and are next due</li>
+      <li>Counts of how many times each schedule has fired</li>
+    </ul>
+
+    <h2><span class="sec-num pink">§2</span> What We Don't Collect</h2>
+    <ul class="not-collected">
+      <li>Message content from anywhere except messages explicitly configured as scheduled posts</li>
+      <li>Member lists, presence data, voice activity, or any other server activity</li>
+      <li>Direct messages</li>
+      <li>User profile information beyond IDs needed for ping delivery</li>
+      <li>IP addresses or device identifiers</li>
+      <li>Analytics or telemetry of any kind</li>
+    </ul>
+    <p>SporkAlerts does not request privileged Discord intents (Message Content, Server Members, Presence). It cannot read regular messages in your server.</p>
+
+    <h2><span class="sec-num pink">§3</span> How We Use Your Data</h2>
+    <p>Collected data is used solely to deliver scheduled messages, display schedule lists and configuration to authorized users, persist configuration across restarts, and validate permissions for managing schedules.</p>
+    <p>We do not sell, trade, or share collected data with third parties. We do not use your data for advertising, profiling, training AI models, or any purpose beyond delivering the bot's stated functionality.</p>
+
+    <h2><span class="sec-num pink">§4</span> Data Storage and Security</h2>
+    <p>Data is stored locally on the server hosting the bot, in a SQLite database and a directory of uploaded images. SporkAlerts does not transmit your data to external services other than Discord itself.</p>
+    <p>Reasonable measures are taken to protect data against unauthorized access, but no system is 100% secure. You acknowledge this when using the bot.</p>
+
+    <h2><span class="sec-num pink">§5</span> Data Retention</h2>
+    <ul>
+      <li><strong>Active schedules:</strong> retained until cancelled by an authorized user.</li>
+      <li><strong>Cancelled schedules:</strong> deleted immediately on cancellation.</li>
+      <li><strong>Server data:</strong> retained while the bot is in your server. Residual configuration may persist until manually purged after removal.</li>
+      <li>No backups are retained beyond what's needed for operational continuity.</li>
+    </ul>
+
+    <h2><span class="sec-num pink">§6</span> Your Rights</h2>
+    <ul>
+      <li>Request a list of data the bot stores about your server</li>
+      <li>Request correction of any inaccurate data</li>
+      <li>Request deletion of all data associated with your server</li>
+      <li>Stop using the bot at any time by removing it from your server</li>
+    </ul>
+    <p>To exercise any of these rights, contact the developers via the support channel listed in the Discord Developer Portal listing.</p>
+
+    <h2><span class="sec-num pink">§7</span> Children's Privacy</h2>
+    <p>SporkAlerts is not intended for users under 13 (or the minimum age required to use Discord in your country, whichever is higher). We do not knowingly collect data from children below this age.</p>
+
+    <h2><span class="sec-num pink">§8</span> Third Parties</h2>
+    <p>SporkAlerts interacts only with Discord's API. Discord's own privacy practices are governed by <a href="https://discord.com/privacy" target="_blank">Discord's Privacy Policy</a>. No third-party analytics, advertising networks, or tracking services are used.</p>
+
+    <h2><span class="sec-num pink">§9</span> Changes to This Policy</h2>
+    <p>This policy may be updated periodically. The "Last updated" date at the top reflects the most recent changes. Significant changes will be announced via the support server or developer portal listing.</p>
+
+    <h2><span class="sec-num pink">§10</span> Contact</h2>
+    <p>For privacy questions, data requests, or concerns, contact the developers via the support channel listed in the Discord Developer Portal listing.</p>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SporkBots / SporkTeam — All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="sporkmp3.html">SporkMP3</a>
+    <a href="sporkalerts.html">SporkAlerts</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<script>
+function switchBot(bot) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.bot-switch-btn').forEach(b => b.classList.remove('active-mp3','active-alerts'));
+  document.getElementById('content-' + bot).classList.add('active');
+  document.getElementById('btn-' + bot).classList.add('active-' + bot);
+}
+</script>
+</body>
+</html>

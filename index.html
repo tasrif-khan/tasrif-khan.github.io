@@ -3,509 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SporkAlerts — Legal</title>
+<title>SporkBots — Discord Bots by SporkTeam</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:        #0e0f13;
-    --surface:   #16181f;
-    --border:    #252830;
-    --accent:    #5865f2;
-    --accent-dim:#3d4ac7;
-    --muted:     #5a5e72;
-    --text:      #c9cde0;
-    --heading:   #eef0f8;
-    --tag-bg:    #1e2030;
-  }
+:root {
+  --bg:#0e0f13; --surface:#16181f; --surface2:#1c1e27;
+  --border:#252830; --accent:#5865f2; --accent2:#eb459e;
+  --muted:#5a5e72; --text:#c9cde0; --heading:#eef0f8; --tag-bg:#1e2030; --green:#3ba55d;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.75;min-height:100vh;}
+header{position:sticky;top:0;z-index:100;background:rgba(14,15,19,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);height:60px;}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+.logo-icon{width:30px;height:30px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:15px;}
+.logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--heading);}
+nav{display:flex;gap:4px;align-items:center;}
+nav a{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;text-decoration:none;color:var(--muted);padding:.35rem .8rem;border-radius:6px;border:1px solid transparent;transition:color .15s,border-color .15s,background .15s;letter-spacing:.04em;text-transform:uppercase;}
+nav a:hover,nav a.active{color:var(--heading);background:var(--tag-bg);border-color:var(--border);}
+.nav-divider{width:1px;height:18px;background:var(--border);margin:0 4px;}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* HERO */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(5rem,12vw,9rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vw,6rem);
+  text-align:center;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 60% 50% at 25% -10%,rgba(232,128,58,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 75% -10%,rgba(124,58,237,.12) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 40% at 80% 110%,rgba(235,69,158,.1) 0%,transparent 60%);
+}
+.hero-content{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--heading);line-height:1.06;letter-spacing:-.025em;margin-bottom:1.4rem;}
+h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{color:var(--muted);font-size:1rem;font-weight:300;max-width:480px;margin:0 auto 2.5rem;}
+.hero-ctas{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.4rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;text-decoration:none;transition:opacity .15s,transform .15s;letter-spacing:.01em;}
+.btn:hover{opacity:.85;transform:translateY(-1px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-ghost{background:var(--tag-bg);color:var(--text);border:1px solid var(--border);}
 
-  html { scroll-behavior: smooth; }
+/* STATS BAR */
+.stats{
+  display:flex;justify-content:center;gap:0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  max-width:700px;margin:0 auto;
+}
+.stat{flex:1;padding:1.4rem 1rem;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:var(--heading);display:block;letter-spacing:-.02em;}
+.stat-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-    min-height: 100vh;
-  }
+/* BOTS SECTION */
+.section{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);}
+.section-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.7rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.bots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1000px;}
 
-  /* ── HEADER ── */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(14,15,19,.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(1.5rem, 5vw, 4rem);
-    height: 60px;
-  }
+.bot-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;display:flex;flex-direction:column;gap:1.5rem;
+  transition:border-color .2s,transform .2s;position:relative;overflow:hidden;
+}
+.bot-card::before{
+  content:'';position:absolute;inset:0;border-radius:16px;opacity:0;
+  transition:opacity .2s;
+}
+.bot-card.mp3::before{background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(232,128,58,.1),transparent);}
+.bot-card.alerts::before{background:radial-gradient(ellipse 80% 60% at 100% 0%,rgba(124,58,237,.12),transparent);}
+.bot-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.bot-card:hover::before{opacity:1;}
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: .65rem;
-    text-decoration: none;
-  }
+.bot-header{display:flex;align-items:center;gap:1rem;position:relative;}
+.bot-avatar{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:26px;flex-shrink:0;}
+.bot-avatar.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
+.bot-avatar.alerts{background:linear-gradient(135deg,#a12d74,#eb459e);}
+.bot-info{}
+.bot-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--heading);display:block;}
+.bot-tagline{font-size:.8rem;color:var(--muted);font-weight:300;}
 
-  .logo-icon {
-    width: 30px; height: 30px;
-    background: var(--accent);
-    border-radius: 8px;
-    display: grid; place-items: center;
-    font-size: 15px;
-  }
+.bot-desc{color:var(--text);font-size:.9rem;line-height:1.65;font-weight:300;}
 
-  .logo-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: .95rem;
-    color: var(--heading);
-    letter-spacing: .01em;
-  }
+.bot-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted);}
 
-  nav {
-    display: flex;
-    gap: 4px;
-  }
+.bot-actions{display:flex;gap:.6rem;margin-top:auto;}
+.bot-actions .btn{font-size:.78rem;padding:.5rem 1rem;}
+.btn-accent-pink{background:var(--accent2);color:#fff;}
 
-  nav a {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--muted);
-    padding: .35rem .8rem;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    transition: color .15s, border-color .15s, background .15s;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
+/* TEAM SECTION */
+.team-section{
+  background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+}
+.team-inner{max-width:1000px;}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.team-text h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--heading);letter-spacing:-.02em;margin-bottom:1rem;line-height:1.12;}
+.team-text p{color:var(--muted);font-weight:300;font-size:.95rem;margin-bottom:1rem;}
+.team-links{display:flex;flex-direction:column;gap:.6rem;}
+.team-link{display:flex;align-items:center;gap:.9rem;padding:1rem 1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color .15s;}
+.team-link:hover{border-color:var(--accent);}
+.tl-icon{font-size:20px;width:36px;text-align:center;flex-shrink:0;}
+.tl-info{}
+.tl-name{font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;color:var(--heading);display:block;}
+.tl-desc{font-size:.75rem;color:var(--muted);}
 
-  nav a:hover, nav a.active {
-    color: var(--heading);
-    background: var(--tag-bg);
-    border-color: var(--border);
-  }
+@media(max-width:640px){
+  .team-grid{grid-template-columns:1fr;}
+  .stats{flex-direction:column;}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:last-child{border-bottom:none;}
+}
 
-  /* ── HERO ── */
-  .hero {
-    padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem) 0;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    color: var(--heading);
-    line-height: 1.08;
-    letter-spacing: -.02em;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero h1 span {
-    color: var(--accent);
-  }
-
-  .hero p {
-    color: var(--muted);
-    font-size: .95rem;
-    max-width: 520px;
-    font-weight: 300;
-  }
-
-  .updated-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    margin-top: 1.6rem;
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: .3rem .75rem;
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    color: var(--muted);
-    letter-spacing: .04em;
-  }
-
-  .updated-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: #3ba55d;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 6px #3ba55d88;
-  }
-
-  /* ── TABS ── */
-  .tabs-wrapper {
-    max-width: 860px;
-    margin: 3rem auto 0;
-    padding: 0 clamp(1.5rem, 5vw, 4rem);
-  }
-
-  .tab-bar {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0;
-  }
-
-  .tab-btn {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: .85rem;
-    letter-spacing: .01em;
-    color: var(--muted);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: .8rem 1.4rem;
-    cursor: pointer;
-    transition: color .15s, border-color .15s;
-    position: relative;
-    bottom: -1px;
-  }
-
-  .tab-btn:hover { color: var(--text); }
-
-  .tab-btn.active {
-    color: var(--heading);
-    border-bottom-color: var(--accent);
-  }
-
-  /* ── CONTENT ── */
-  .tab-content {
-    display: none;
-    padding: 2.5rem 0 5rem;
-    animation: fadeUp .25s ease both;
-  }
-
-  .tab-content.active { display: block; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── DOCUMENT STYLES ── */
-  .doc h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--heading);
-    margin: 2.5rem 0 .7rem;
-    letter-spacing: -.005em;
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-  }
-
-  .doc h2:first-child { margin-top: 0; }
-
-  .doc h2 .sec-num {
-    font-family: 'DM Mono', monospace;
-    font-size: .68rem;
-    font-weight: 500;
-    color: var(--accent);
-    background: rgba(88,101,242,.12);
-    border: 1px solid rgba(88,101,242,.25);
-    border-radius: 4px;
-    padding: .15rem .45rem;
-    letter-spacing: .06em;
-  }
-
-  .doc p { margin-bottom: .85rem; }
-  .doc p:last-child { margin-bottom: 0; }
-
-  .doc ul {
-    margin: .6rem 0 .85rem 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .doc ul li {
-    position: relative;
-    padding-left: 1.3rem;
-    margin-bottom: .4rem;
-    color: var(--text);
-  }
-
-  .doc ul li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .doc a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(88,101,242,.35);
-    transition: border-color .15s, color .15s;
-  }
-
-  .doc a:hover {
-    color: #7b87f5;
-    border-bottom-color: #7b87f5;
-  }
-
-  .doc strong { color: var(--heading); font-weight: 500; }
-
-  /* subsection heading (bold line within a section) */
-  .doc .subsection {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    margin: 1.4rem 0 .4rem;
-  }
-
-  .not-collected {
-    background: rgba(59,165,93,.06);
-    border: 1px solid rgba(59,165,93,.18);
-    border-radius: 8px;
-    padding: .9rem 1.1rem;
-    margin: .6rem 0 .85rem;
-  }
-
-  .not-collected li::before { color: #3ba55d !important; content: '✓' !important; }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.8rem clamp(1.5rem, 5vw, 4rem);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  footer p {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    color: var(--muted);
-    letter-spacing: .04em;
-  }
-
-  footer .footer-links {
-    display: flex;
-    gap: 1.2rem;
-  }
-
-  footer .footer-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: .04em;
-    transition: color .15s;
-  }
-
-  footer .footer-links a:hover { color: var(--text); }
-
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+footer{border-top:1px solid var(--border);padding:1.8rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+.footer-links{display:flex;gap:1.2rem;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--text);}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 </style>
 </head>
 <body>
 
 <header>
-  <a class="logo" href="#">
-    <div class="logo-icon">🗓</div>
-    <span class="logo-name">SporkAlerts</span>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">🍴</div>
+    <span class="logo-name">SporkBots</span>
   </a>
   <nav>
-    <a href="#" class="active" id="nav-terms" onclick="switchTab('terms');return false;">Terms</a>
-    <a href="#" id="nav-privacy" onclick="switchTab('privacy');return false;">Privacy</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="sporkmp3.html">SporkMP3</a>
+    <a href="sporkalerts.html">SporkAlerts</a>
+    <div class="nav-divider"></div>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
   </nav>
 </header>
 
-<div class="hero">
-  <p class="hero-eyebrow">SporkBots — Legal</p>
-  <h1>Simple rules.<br><span>No surprises.</span></h1>
-  <p>Everything you need to know about how SporkAlerts works and what data it does (and doesn't) touch.</p>
-  <div class="updated-badge">Last updated — April 26, 2026</div>
-</div>
-
-<div class="tabs-wrapper">
-  <div class="tab-bar">
-    <button class="tab-btn active" id="tab-terms" onclick="switchTab('terms')">Terms of Service</button>
-    <button class="tab-btn" id="tab-privacy" onclick="switchTab('privacy')">Privacy Policy</button>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="eyebrow">SporkBots by SporkTeam</p>
+    <h1>Bots built for<br><em>real Discord</em> needs.</h1>
+    <p class="hero-sub">Free, configurable, and built from scratch — because the right tools shouldn't cost a subscription.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="sporkmp3.html">Explore SporkMP3</a>
+      <a class="btn btn-ghost" href="sporkalerts.html">Explore SporkAlerts</a>
+    </div>
   </div>
+</section>
 
-  <!-- TERMS -->
-  <div class="tab-content active doc" id="content-terms">
-
-    <h2><span class="sec-num">§1</span> Service Description</h2>
-    <p>The Bot allows server administrators and authorized users to schedule recurring messages and event-based reminders within Discord servers. Messages may include text, images, and pings to users or roles.</p>
-
-    <h2><span class="sec-num">§2</span> Eligibility</h2>
-    <p>You must comply with <a href="https://discord.com/terms" target="_blank">Discord's Terms of Service</a> and <a href="https://discord.com/guidelines" target="_blank">Community Guidelines</a> at all times. You must be old enough to use Discord in your jurisdiction (generally 13 or older).</p>
-
-    <h2><span class="sec-num">§3</span> Acceptable Use</h2>
-    <p>You agree not to use the Bot to:</p>
-    <ul>
-      <li>Send spam, harassment, threats, or content that violates Discord's Community Guidelines.</li>
-      <li>Send sexually explicit content, content involving minors, or content that promotes violence, hate, or illegal activity.</li>
-      <li>Circumvent Discord's rate limits, anti-spam systems, or server moderation.</li>
-      <li>Impersonate other users, the Bot's developers, or Discord itself.</li>
-      <li>Send unsolicited advertising or promotional content to users who haven't opted in.</li>
-      <li>Use the Bot to harm, deceive, or surveil any person.</li>
-    </ul>
-    <p>Server administrators are responsible for the schedules created on their servers, including content sent by users they have granted scheduling permissions to.</p>
-
-    <h2><span class="sec-num">§4</span> Permissions and Access</h2>
-    <p>The Bot requires certain Discord permissions to function (such as Send Messages, Embed Links, Attach Files, and optionally Mention All Roles). Granting these permissions implies consent for the Bot to use them as described in the documentation.</p>
-    <p>The Bot does not require, request, or use Discord's privileged intents (Message Content, Server Members, Presence) to function.</p>
-
-    <h2><span class="sec-num">§5</span> Availability</h2>
-    <p>The Bot is provided <strong>"as is"</strong> with no guarantee of uptime, availability, or uninterrupted service. Scheduled messages may be delayed or fail to send during outages, maintenance, or due to Discord platform issues. The developers are not liable for missed reminders or undelivered messages.</p>
-
-    <h2><span class="sec-num">§6</span> Modifications and Termination</h2>
-    <p>The developers reserve the right to:</p>
-    <ul>
-      <li>Modify, suspend, or discontinue the Bot at any time, with or without notice.</li>
-      <li>Update these Terms at any time. Continued use after changes constitutes acceptance.</li>
-      <li>Refuse service to any server or user that violates these Terms.</li>
-      <li>Remove the Bot from any server at the developers' discretion.</li>
-    </ul>
-    <p>You may stop using the Bot at any time by removing it from your server.</p>
-
-    <h2><span class="sec-num">§7</span> Limitation of Liability</h2>
-    <p>To the maximum extent permitted by law, the developers are not liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of the Bot, including but not limited to lost data, missed messages, or content posted by the Bot on your behalf.</p>
-
-    <h2><span class="sec-num">§8</span> Contact</h2>
-    <p>For questions, abuse reports, or termination requests, contact the developers via the support channel listed in the Discord Developer Portal listing.</p>
-
-  </div>
-
-  <!-- PRIVACY -->
-  <div class="tab-content doc" id="content-privacy">
-
-    <h2><span class="sec-num">§1</span> Data We Collect</h2>
-    <p>The Bot stores only the data required to deliver scheduled messages.</p>
-
-    <p class="subsection">Server (guild) data</p>
-    <ul>
-      <li>Server (guild) ID</li>
-      <li>Channel IDs where schedules are configured to post</li>
-      <li>Role IDs that have been granted scheduling permissions</li>
-      <li>The server's configured timezone</li>
-      <li>Whether the server has completed initial onboarding</li>
-    </ul>
-
-    <p class="subsection">Schedule data</p>
-    <ul>
-      <li>The text content of scheduled messages</li>
-      <li>Uploaded image attachments (stored as files on disk)</li>
-      <li>Schedule configuration: timing, intervals, target times, variant settings, embed settings, max-fire limits</li>
-      <li>Role IDs and user IDs configured to receive pings</li>
-      <li>The Discord user ID of the schedule creator</li>
-      <li>Timestamps of when schedules were created, last fired, and are next due</li>
-      <li>Counts of how many times each schedule has fired</li>
-    </ul>
-
-    <p class="subsection">What we do NOT collect</p>
-    <ul class="not-collected">
-      <li>Message content from anywhere except messages explicitly configured as scheduled posts</li>
-      <li>Member lists, presence data, voice activity, or any other server activity</li>
-      <li>Direct messages</li>
-      <li>User profile information beyond IDs needed for ping delivery</li>
-      <li>IP addresses or device identifiers</li>
-      <li>Analytics or telemetry of any kind</li>
-    </ul>
-    <p>The Bot does not request privileged Discord intents (Message Content, Server Members, Presence). It cannot read regular messages in your server.</p>
-
-    <h2><span class="sec-num">§2</span> How We Use Your Data</h2>
-    <p>Collected data is used solely to deliver scheduled messages at their configured times, display schedule lists and configuration to authorized users, persist configuration across restarts, and validate permissions for managing schedules.</p>
-    <p>We do not sell, trade, or share collected data with third parties. We do not use your data for advertising, profiling, training AI models, or any purpose beyond delivering the Bot's stated functionality.</p>
-
-    <h2><span class="sec-num">§3</span> Data Storage and Security</h2>
-    <p>Data is stored locally on the server hosting the Bot, in a SQLite database and a directory of uploaded images. The Bot does not transmit your data to external services other than Discord itself (which is required to deliver the scheduled messages).</p>
-    <p>Reasonable measures are taken to protect data against unauthorized access, but no system is 100% secure. You acknowledge this when using the Bot.</p>
-
-    <h2><span class="sec-num">§4</span> Data Retention</h2>
-    <ul>
-      <li><strong>Active schedules:</strong> retained until cancelled by an authorized user.</li>
-      <li><strong>Cancelled schedules:</strong> schedule data and associated images are deleted immediately on cancellation.</li>
-      <li><strong>Server data:</strong> retained while the Bot is in your server. When the Bot is removed, residual configuration data may persist until manually purged.</li>
-      <li><strong>No backups</strong> are retained beyond what's needed for operational continuity.</li>
-    </ul>
-    <p>To request deletion of all data associated with your server, remove the Bot from your server and contact the developers.</p>
-
-    <h2><span class="sec-num">§5</span> Your Rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-      <li>Request a list of data the Bot stores about your server</li>
-      <li>Request correction of any inaccurate data</li>
-      <li>Request deletion of all data associated with your server</li>
-      <li>Stop using the Bot at any time by removing it from your server</li>
-    </ul>
-    <p>To exercise any of these rights, contact the developers via the support channel listed in the Discord Developer Portal listing.</p>
-
-    <h2><span class="sec-num">§6</span> Children's Privacy</h2>
-    <p>The Bot is not intended for users under 13 (or the minimum age required to use Discord in your country, whichever is higher). We do not knowingly collect data from children below this age.</p>
-
-    <h2><span class="sec-num">§7</span> Third Parties</h2>
-    <p>The Bot interacts only with Discord's API. Discord's own privacy practices are governed by <a href="https://discord.com/privacy" target="_blank">Discord's Privacy Policy</a>. The Bot does not use third-party analytics, advertising networks, or tracking services.</p>
-
-    <h2><span class="sec-num">§8</span> Changes to This Policy</h2>
-    <p>This Privacy Policy may be updated periodically. The "Last updated" date at the top of this document reflects the most recent changes. Significant changes will be announced via the Bot's support server or developer portal listing where reasonably possible.</p>
-
-    <h2><span class="sec-num">§9</span> Contact</h2>
-    <p>For privacy questions, data requests, or concerns, contact the developers via the support channel listed in the Discord Developer Portal listing.</p>
-
+<div style="max-width:700px;margin:0 auto;">
+  <div class="stats">
+    <div class="stat"><span class="stat-num">2</span><span class="stat-label">Bots</span></div>
+    <div class="stat"><span class="stat-num">2.5k+</span><span class="stat-label">Servers</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
   </div>
 </div>
+
+<section class="section">
+  <div class="section-label">Our bots</div>
+  <div class="bots-grid">
+
+    <div class="bot-card mp3">
+      <div class="bot-header">
+        <div class="bot-avatar mp3" style="background:linear-gradient(135deg,#404d72,#e8803a);">🎵</div>
+        <div class="bot-info">
+          <span class="bot-name">SporkMP3</span>
+          <span class="bot-tagline">Your Discord music companion</span>
+        </div>
+      </div>
+      <p class="bot-desc">Play your own audio files in voice channels — no compression, full quality. Skip, seek, loop, and save sounds to a permanent server library. Built for musicians, creators, and friends who want to share audio their way.</p>
+      <div class="bot-tags">
+        <span class="tag">Music</span>
+        <span class="tag">Voice</span>
+        <span class="tag">Audio</span>
+        <span class="tag">Library</span>
+        <span class="tag">Free</span>
+      </div>
+      <div class="bot-actions">
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1318106283760680970" target="_blank" style="background:#e8803a;">Add to Server</a>
+        <a class="btn btn-ghost" href="sporkmp3.html">Learn More</a>
+      </div>
+    </div>
+
+    <div class="bot-card alerts">
+      <div class="bot-header">
+        <div class="bot-avatar alerts" style="background:linear-gradient(135deg,#4a1a8c,#7c3aed,#f72585);">🗓</div>
+        <div class="bot-info">
+          <span class="bot-name">SporkAlerts</span>
+          <span class="bot-tagline">Scheduling made simple</span>
+        </div>
+      </div>
+      <p class="bot-desc">Schedule recurring messages and event-based reminders across your server. Support for text, images, role pings, custom timing, and granular permissions — so the right people hear the right things at the right time.</p>
+      <div class="bot-tags">
+        <span class="tag">Scheduling</span>
+        <span class="tag">Reminders</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Roles</span>
+        <span class="tag">Free</span>
+      </div>
+      <div class="bot-actions">
+        <a class="btn btn-accent-pink" href="#" target="_blank" style="background:linear-gradient(135deg,#7c3aed,#f72585);">Add to Server</a>
+        <a class="btn btn-ghost" href="sporkalerts.html">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="team-inner">
+    <div class="team-grid">
+      <div class="team-text">
+        <h2>Built by<br>SporkTeam.</h2>
+        <p>We build free Discord bots because we use Discord and know what's missing. No paywalls, no premium tiers — just tools that work.</p>
+        <p>Have a question, suggestion, or found a bug? Reach out through any of our community channels.</p>
+      </div>
+      <div class="team-links">
+        <a class="team-link" href="https://discord.gg/kvrT4SsuG4" target="_blank">
+          <div class="tl-icon">💬</div>
+          <div class="tl-info">
+            <span class="tl-name">Support Server</span>
+            <span class="tl-desc">Get help, suggest features, report bugs</span>
+          </div>
+        </a>
+        <a class="team-link" href="https://sporkmp3.net" target="_blank">
+          <div class="tl-icon">🌐</div>
+          <div class="tl-info">
+            <span class="tl-name">SporkMP3 Website</span>
+            <span class="tl-desc">Full documentation and bot info</span>
+          </div>
+        </a>
+        <a class="team-link" href="terms.html">
+          <div class="tl-icon">📄</div>
+          <div class="tl-info">
+            <span class="tl-name">Legal</span>
+            <span class="tl-desc">Terms of Service &amp; Privacy Policies</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <p>© 2026 SporkBots — All rights reserved.</p>
+  <p>© 2026 SporkBots / SporkTeam — All rights reserved.</p>
   <div class="footer-links">
-    <a href="#" onclick="switchTab('terms');return false;">Terms</a>
-    <a href="#" onclick="switchTab('privacy');return false;">Privacy</a>
-    <a href="https://discord.com/terms" target="_blank">Discord ToS</a>
+    <a href="sporkmp3.html">SporkMP3</a>
+    <a href="sporkalerts.html">SporkAlerts</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
   </div>
 </footer>
-
-<script>
-  function switchTab(tab) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('#nav-terms, #nav-privacy').forEach(a => a.classList.remove('active'));
-
-    document.getElementById('tab-' + tab).classList.add('active');
-    document.getElementById('content-' + tab).classList.add('active');
-    document.getElementById('nav-' + tab).classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
 
 </body>
 </html>
