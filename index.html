@@ -3,54 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SporkBots — Discord Bots by SporkTeam</title>
+<title>SporkBots — Free Discord Bots by SporkTeam</title>
+<meta name="description" content="SporkMP3 and SporkAlerts: free, privacy-first Discord bots for high-quality audio playback and scheduled messages. No paywalls, no premium tiers.">
+<meta property="og:title" content="SporkBots — Free Discord Bots">
+<meta property="og:description" content="SporkMP3 plays your audio files at full quality. SporkAlerts schedules recurring messages. Both free, forever.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%235865f2%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 text-anchor=%22middle%22>🍴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#0e0f13; --surface:#16181f; --surface2:#1c1e27;
   --border:#252830; --accent:#5865f2; --accent2:#eb459e;
+  --mp3:#e8803a; --alerts:#7c3aed;
   --muted:#5a5e72; --text:#c9cde0; --heading:#eef0f8; --tag-bg:#1e2030; --green:#3ba55d;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.75;min-height:100vh;}
-header{position:sticky;top:0;z-index:100;background:rgba(14,15,19,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);height:60px;}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px;}
+
+header{position:sticky;top:0;z-index:100;background:rgba(14,15,19,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 clamp(1rem,5vw,4rem);height:60px;}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex-shrink:0;}
 .logo-icon{width:30px;height:30px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:15px;}
 .logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--heading);}
-nav{display:flex;gap:4px;align-items:center;}
-nav a{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;text-decoration:none;color:var(--muted);padding:.35rem .8rem;border-radius:6px;border:1px solid transparent;transition:color .15s,border-color .15s,background .15s;letter-spacing:.04em;text-transform:uppercase;}
+nav{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;text-decoration:none;color:var(--muted);padding:.35rem .8rem;border-radius:6px;border:1px solid transparent;transition:color .15s,border-color .15s,background .15s;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;}
 nav a:hover,nav a.active{color:var(--heading);background:var(--tag-bg);border-color:var(--border);}
-.nav-divider{width:1px;height:18px;background:var(--border);margin:0 4px;}
+.nav-divider{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0;}
 
 /* HERO */
-.hero{
-  position:relative;overflow:hidden;
-  padding:clamp(5rem,12vw,9rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vw,6rem);
-  text-align:center;
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 60% 50% at 25% -10%,rgba(232,128,58,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 75% -10%,rgba(124,58,237,.12) 0%,transparent 60%),
-             radial-gradient(ellipse 50% 40% at 80% 110%,rgba(235,69,158,.1) 0%,transparent 60%);
-}
-.hero-content{position:relative;z-index:1;max-width:700px;margin:0 auto;}
-.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--heading);line-height:1.06;letter-spacing:-.025em;margin-bottom:1.4rem;}
+.hero{position:relative;overflow:hidden;padding:clamp(3.5rem,9vw,7rem) clamp(1.5rem,5vw,4rem) clamp(3rem,7vw,5rem);}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 55% 55% at 15% -5%,rgba(232,128,58,.13) 0%,transparent 60%),
+             radial-gradient(ellipse 55% 55% at 85% -5%,rgba(124,58,237,.14) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 40% at 50% 115%,rgba(88,101,242,.1) 0%,transparent 60%);}
+.hero-inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--heading);line-height:1.06;letter-spacing:-.025em;margin-bottom:1.3rem;}
 h1 em{font-style:normal;color:var(--accent);}
-.hero-sub{color:var(--muted);font-size:1rem;font-weight:300;max-width:480px;margin:0 auto 2.5rem;}
-.hero-ctas{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+.hero-sub{color:var(--muted);font-size:1rem;font-weight:300;max-width:460px;margin-bottom:2.2rem;}
+.hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.4rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;text-decoration:none;transition:opacity .15s,transform .15s;letter-spacing:.01em;}
 .btn:hover{opacity:.85;transform:translateY(-1px);}
-.btn-primary{background:var(--accent);color:#fff;}
+.btn-mp3{background:var(--mp3);color:#fff;}
+.btn-alerts{background:linear-gradient(135deg,var(--alerts),#f72585);color:#fff;}
 .btn-ghost{background:var(--tag-bg);color:var(--text);border:1px solid var(--border);}
 
+/* DISCORD MOCK — the signature */
+.discord-mock{background:#313338;border:1px solid #26272b;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,0,0,.6);font-size:.85rem;}
+.dm-topbar{display:flex;align-items:center;gap:.55rem;padding:.7rem 1rem;background:#313338;border-bottom:1px solid #26272b;}
+.dm-hash{color:#80848e;font-weight:700;font-size:1.05rem;}
+.dm-channel{color:#f2f3f5;font-weight:600;font-size:.85rem;font-family:'DM Sans',sans-serif;}
+.dm-topic{color:#80848e;font-size:.72rem;border-left:1px solid #3f4147;padding-left:.6rem;margin-left:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dm-body{padding:1rem 1rem 1.2rem;display:flex;flex-direction:column;gap:1.1rem;}
+.dm-msg{display:flex;gap:.8rem;opacity:0;animation:msgIn .5s ease forwards;}
+.dm-msg:nth-child(1){animation-delay:.15s;}
+.dm-msg:nth-child(2){animation-delay:.65s;}
+.dm-msg:nth-child(3){animation-delay:1.15s;}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.dm-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:18px;flex-shrink:0;}
+.dm-avatar.alerts{background:linear-gradient(135deg,#4a1a8c,#7c3aed,#f72585);}
+.dm-avatar.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
+.dm-avatar.user{background:#5865f2;font-size:15px;}
+.dm-content{min-width:0;flex:1;}
+.dm-name-row{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;}
+.dm-name{color:#f2f3f5;font-weight:600;font-size:.85rem;}
+.dm-badge{background:#5865f2;color:#fff;font-size:.58rem;font-weight:600;padding:.06rem .3rem;border-radius:3px;letter-spacing:.02em;vertical-align:middle;}
+.dm-time{color:#80848e;font-size:.66rem;}
+.dm-text{color:#dbdee1;font-size:.83rem;line-height:1.45;margin-top:.1rem;font-weight:300;}
+.dm-mention{background:rgba(88,101,242,.3);color:#c9cdfb;border-radius:3px;padding:0 .18rem;font-weight:500;}
+.dm-embed{margin-top:.4rem;background:#2b2d31;border-left:3px solid var(--alerts);border-radius:4px;padding:.6rem .8rem;}
+.dm-embed.orange{border-left-color:var(--mp3);}
+.dm-embed-title{color:#f2f3f5;font-weight:600;font-size:.8rem;margin-bottom:.15rem;}
+.dm-embed-desc{color:#b5bac1;font-size:.75rem;font-weight:300;line-height:1.45;}
+.dm-progress{margin-top:.55rem;display:flex;align-items:center;gap:.55rem;}
+.dm-track{flex:1;height:5px;background:#1e1f22;border-radius:99px;overflow:hidden;}
+.dm-fill{height:100%;width:42%;background:linear-gradient(90deg,#e8803a,#f0a060);border-radius:99px;}
+.dm-timestamp{font-family:'DM Mono',monospace;font-size:.62rem;color:#80848e;}
+.dm-buttons{display:flex;gap:.35rem;margin-top:.55rem;}
+.dm-btn{background:#4e5058;color:#fff;border-radius:4px;padding:.22rem .55rem;font-size:.68rem;font-weight:500;}
+.dm-btn.blurple{background:#5865f2;}
+.mock-caption{text-align:center;font-family:'DM Mono',monospace;font-size:.64rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.9rem;}
+
 /* STATS BAR */
-.stats{
-  display:flex;justify-content:center;gap:0;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  max-width:700px;margin:0 auto;
-}
+.stats{display:flex;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:700px;margin:0 auto;}
 .stat{flex:1;padding:1.4rem 1rem;text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
 .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:var(--heading);display:block;letter-spacing:-.02em;}
@@ -58,47 +97,46 @@ h1 em{font-style:normal;color:var(--accent);}
 
 /* BOTS SECTION */
 .section{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);}
+.section-inner{max-width:1000px;margin:0 auto;}
 .section-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.7rem;}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-.bots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1000px;}
+.bots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
 
-.bot-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:2rem;display:flex;flex-direction:column;gap:1.5rem;
-  transition:border-color .2s,transform .2s;position:relative;overflow:hidden;
-}
-.bot-card::before{
-  content:'';position:absolute;inset:0;border-radius:16px;opacity:0;
-  transition:opacity .2s;
-}
+.bot-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1.4rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
+.bot-card::before{content:'';position:absolute;inset:0;border-radius:16px;opacity:0;transition:opacity .2s;pointer-events:none;}
 .bot-card.mp3::before{background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(232,128,58,.1),transparent);}
 .bot-card.alerts::before{background:radial-gradient(ellipse 80% 60% at 100% 0%,rgba(124,58,237,.12),transparent);}
-.bot-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.bot-card.mp3:hover{border-color:var(--mp3);transform:translateY(-2px);}
+.bot-card.alerts:hover{border-color:var(--alerts);transform:translateY(-2px);}
 .bot-card:hover::before{opacity:1;}
 
 .bot-header{display:flex;align-items:center;gap:1rem;position:relative;}
 .bot-avatar{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:26px;flex-shrink:0;}
 .bot-avatar.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
 .bot-avatar.alerts{background:linear-gradient(135deg,#a12d74,#eb459e);}
-.bot-info{}
 .bot-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--heading);display:block;}
 .bot-tagline{font-size:.8rem;color:var(--muted);font-weight:300;}
-
-.bot-desc{color:var(--text);font-size:.9rem;line-height:1.65;font-weight:300;}
-
-.bot-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.bot-desc{color:var(--text);font-size:.9rem;line-height:1.65;font-weight:300;position:relative;}
+.bot-highlights{display:flex;flex-direction:column;gap:.45rem;position:relative;}
+.bot-hl{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--text);font-weight:300;}
+.bot-hl::before{content:'→';flex-shrink:0;font-family:'DM Mono',monospace;font-size:.75rem;margin-top:.05rem;}
+.mp3 .bot-hl::before{color:var(--mp3);}
+.alerts .bot-hl::before{color:var(--alerts);}
+.bot-tags{display:flex;flex-wrap:wrap;gap:.4rem;position:relative;}
 .tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;background:var(--tag-bg);border:1px solid var(--border);color:var(--muted);}
-
-.bot-actions{display:flex;gap:.6rem;margin-top:auto;}
+.bot-actions{display:flex;gap:.6rem;margin-top:auto;position:relative;}
 .bot-actions .btn{font-size:.78rem;padding:.5rem 1rem;}
-.btn-accent-pink{background:var(--accent2);color:#fff;}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
+.value-icon{font-size:24px;margin-bottom:.8rem;}
+.value-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;color:var(--heading);margin-bottom:.4rem;}
+.value-desc{font-size:.83rem;color:var(--muted);font-weight:300;line-height:1.6;}
 
 /* TEAM SECTION */
-.team-section{
-  background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
-}
-.team-inner{max-width:1000px;}
+.team-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);}
+.team-inner{max-width:1000px;margin:0 auto;}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
 .team-text h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--heading);letter-spacing:-.02em;margin-bottom:1rem;line-height:1.12;}
 .team-text p{color:var(--muted);font-weight:300;font-size:.95rem;margin-bottom:1rem;}
@@ -106,23 +144,30 @@ h1 em{font-style:normal;color:var(--accent);}
 .team-link{display:flex;align-items:center;gap:.9rem;padding:1rem 1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color .15s;}
 .team-link:hover{border-color:var(--accent);}
 .tl-icon{font-size:20px;width:36px;text-align:center;flex-shrink:0;}
-.tl-info{}
 .tl-name{font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;color:var(--heading);display:block;}
 .tl-desc{font-size:.75rem;color:var(--muted);}
 
-@media(max-width:640px){
+footer{border-top:1px solid var(--border);padding:1.8rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+.footer-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .15s;}
+.footer-links a:hover{color:var(--text);}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+@media(max-width:820px){
+  .hero-inner{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
   .stats{flex-direction:column;}
   .stat{border-right:none;border-bottom:1px solid var(--border);}
   .stat:last-child{border-bottom:none;}
 }
-
-footer{border-top:1px solid var(--border);padding:1.8rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
-.footer-links{display:flex;gap:1.2rem;}
-.footer-links a{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .15s;}
-.footer-links a:hover{color:var(--text);}
-::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  .dm-msg{opacity:1;}
+  html{scroll-behavior:auto;}
+}
 </style>
 </head>
 <body>
@@ -132,10 +177,11 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
     <div class="logo-icon">🍴</div>
     <span class="logo-name">SporkBots</span>
   </a>
-  <nav>
-    <a href="index.html" class="active">Home</a>
+  <nav aria-label="Main">
+    <a href="index.html" class="active" aria-current="page">Home</a>
     <a href="sporkmp3.html">SporkMP3</a>
     <a href="sporkalerts.html">SporkAlerts</a>
+    <a href="guides.html">Guides</a>
     <div class="nav-divider"></div>
     <a href="terms.html">Terms</a>
     <a href="privacy.html">Privacy</a>
@@ -144,18 +190,69 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
-    <p class="eyebrow">SporkBots by SporkTeam</p>
-    <h1>Bots built for<br><em>real Discord</em> needs.</h1>
-    <p class="hero-sub">Free, configurable, and built from scratch — because the right tools shouldn't cost a subscription.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="sporkmp3.html">Explore SporkMP3</a>
-      <a class="btn btn-ghost" href="sporkalerts.html">Explore SporkAlerts</a>
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">SporkBots by SporkTeam</p>
+      <h1>Bots built for<br><em>real Discord</em> needs.</h1>
+      <p class="hero-sub">Free, configurable, and built from scratch — because the right tools shouldn't cost a subscription.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-mp3" href="https://discord.com/discovery/applications/1318106283760680970" target="_blank" rel="noopener">Add SporkMP3</a>
+        <a class="btn btn-alerts" href="https://discord.com/discovery/applications/1357218916027338813" target="_blank" rel="noopener">Add SporkAlerts</a>
+        <a class="btn btn-ghost" href="https://discord.gg/kvrT4SsuG4" target="_blank" rel="noopener">Join our Discord</a>
+      </div>
+    </div>
+    <div>
+      <div class="discord-mock" role="img" aria-label="Example Discord channel showing SporkAlerts posting a scheduled reminder and SporkMP3 playing a track">
+        <div class="dm-topbar">
+          <span class="dm-hash">#</span>
+          <span class="dm-channel">general</span>
+          <span class="dm-topic">where the bots do their thing</span>
+        </div>
+        <div class="dm-body">
+          <div class="dm-msg">
+            <div class="dm-avatar alerts">🗓</div>
+            <div class="dm-content">
+              <div class="dm-name-row"><span class="dm-name">SporkAlerts</span><span class="dm-badge">BOT</span><span class="dm-time">Today at 7:30 PM</span></div>
+              <div class="dm-text"><span class="dm-mention">@Raiders</span> — heads up!</div>
+              <div class="dm-embed">
+                <div class="dm-embed-title">⚔️ Raid night starts in 30 minutes</div>
+                <div class="dm-embed-desc">Grab your consumables and hop in voice. Fires every Friday, automatically.</div>
+              </div>
+            </div>
+          </div>
+          <div class="dm-msg">
+            <div class="dm-avatar user">🧑</div>
+            <div class="dm-content">
+              <div class="dm-name-row"><span class="dm-name">spork_enjoyer</span><span class="dm-time">Today at 7:31 PM</span></div>
+              <div class="dm-text">queue up the hype playlist 🔥</div>
+            </div>
+          </div>
+          <div class="dm-msg">
+            <div class="dm-avatar mp3">🎵</div>
+            <div class="dm-content">
+              <div class="dm-name-row"><span class="dm-name">SporkMP3</span><span class="dm-badge">BOT</span><span class="dm-time">Today at 7:31 PM</span></div>
+              <div class="dm-embed orange">
+                <div class="dm-embed-title">Now playing — pre_raid_hype.flac</div>
+                <div class="dm-embed-desc">Requested by spork_enjoyer · original quality, zero compression</div>
+                <div class="dm-progress">
+                  <span class="dm-timestamp">1:42</span>
+                  <div class="dm-track"><div class="dm-fill"></div></div>
+                  <span class="dm-timestamp">4:05</span>
+                </div>
+                <div class="dm-buttons">
+                  <span class="dm-btn">⏮</span><span class="dm-btn blurple">⏸</span><span class="dm-btn">⏭</span><span class="dm-btn">⇄</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mock-caption">Live in 2,500+ servers</p>
     </div>
   </div>
 </section>
 
-<div style="max-width:700px;margin:0 auto;">
+<div style="max-width:700px;margin:0 auto;padding:0 1.5rem;">
   <div class="stats">
     <div class="stat"><span class="stat-num">2</span><span class="stat-label">Bots</span></div>
     <div class="stat"><span class="stat-num">2.5k+</span><span class="stat-label">Servers</span></div>
@@ -164,53 +261,82 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
 </div>
 
 <section class="section">
-  <div class="section-label">Our bots</div>
-  <div class="bots-grid">
+  <div class="section-inner">
+    <div class="section-label">Our bots</div>
+    <div class="bots-grid">
 
-    <div class="bot-card mp3">
-      <div class="bot-header">
-        <div class="bot-avatar mp3" style="background:linear-gradient(135deg,#404d72,#e8803a);">🎵</div>
-        <div class="bot-info">
-          <span class="bot-name">SporkMP3</span>
-          <span class="bot-tagline">Your Discord music companion</span>
+      <div class="bot-card mp3">
+        <div class="bot-header">
+          <div class="bot-avatar mp3">🎵</div>
+          <div>
+            <span class="bot-name">SporkMP3</span>
+            <span class="bot-tagline">Your Discord music companion</span>
+          </div>
+        </div>
+        <p class="bot-desc">Play your own audio files in voice channels — no compression, full quality. Built for musicians, creators, and friends who want to share audio their way.</p>
+        <div class="bot-highlights">
+          <div class="bot-hl">Original-quality playback, from MP3 to FLAC</div>
+          <div class="bot-hl">Skip, seek, loop, shuffle, and speed control</div>
+          <div class="bot-hl">Permanent per-server sound library</div>
+          <div class="bot-hl">Role whitelists, blacklists, and channel controls</div>
+        </div>
+        <div class="bot-tags">
+          <span class="tag">Music</span><span class="tag">Voice</span><span class="tag">Audio</span><span class="tag">Library</span><span class="tag">Free</span>
+        </div>
+        <div class="bot-actions">
+          <a class="btn btn-mp3" href="https://discord.com/discovery/applications/1318106283760680970" target="_blank" rel="noopener">Add to Server</a>
+          <a class="btn btn-ghost" href="sporkmp3.html">Learn More</a>
         </div>
       </div>
-      <p class="bot-desc">Play your own audio files in voice channels — no compression, full quality. Skip, seek, loop, and save sounds to a permanent server library. Built for musicians, creators, and friends who want to share audio their way.</p>
-      <div class="bot-tags">
-        <span class="tag">Music</span>
-        <span class="tag">Voice</span>
-        <span class="tag">Audio</span>
-        <span class="tag">Library</span>
-        <span class="tag">Free</span>
-      </div>
-      <div class="bot-actions">
-        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1318106283760680970" target="_blank" style="background:#e8803a;">Add to Server</a>
-        <a class="btn btn-ghost" href="sporkmp3.html">Learn More</a>
-      </div>
-    </div>
 
-    <div class="bot-card alerts">
-      <div class="bot-header">
-        <div class="bot-avatar alerts" style="background:linear-gradient(135deg,#4a1a8c,#7c3aed,#f72585);">🗓</div>
-        <div class="bot-info">
-          <span class="bot-name">SporkAlerts</span>
-          <span class="bot-tagline">Scheduling made simple</span>
+      <div class="bot-card alerts">
+        <div class="bot-header">
+          <div class="bot-avatar alerts">🗓</div>
+          <div>
+            <span class="bot-name">SporkAlerts</span>
+            <span class="bot-tagline">Scheduling made simple</span>
+          </div>
+        </div>
+        <p class="bot-desc">Schedule recurring messages and event-based reminders across your server — so the right people hear the right things at the right time.</p>
+        <div class="bot-highlights">
+          <div class="bot-hl">Recurring and one-off schedules with custom timing</div>
+          <div class="bot-hl">Text, images, embeds, and role or user pings</div>
+          <div class="bot-hl">Per-role permissions for who manages schedules</div>
+          <div class="bot-hl">Timezone-aware — fires at your community's local time</div>
+        </div>
+        <div class="bot-tags">
+          <span class="tag">Scheduling</span><span class="tag">Reminders</span><span class="tag">Automation</span><span class="tag">Roles</span><span class="tag">Free</span>
+        </div>
+        <div class="bot-actions">
+          <a class="btn btn-alerts" href="https://discord.com/discovery/applications/1357218916027338813" target="_blank" rel="noopener">Add to Server</a>
+          <a class="btn btn-ghost" href="sporkalerts.html">Learn More</a>
         </div>
       </div>
-      <p class="bot-desc">Schedule recurring messages and event-based reminders across your server. Support for text, images, role pings, custom timing, and granular permissions — so the right people hear the right things at the right time.</p>
-      <div class="bot-tags">
-        <span class="tag">Scheduling</span>
-        <span class="tag">Reminders</span>
-        <span class="tag">Automation</span>
-        <span class="tag">Roles</span>
-        <span class="tag">Free</span>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="section-label">Why SporkBots</div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🆓</div>
+        <div class="value-title">Free, no asterisks</div>
+        <div class="value-desc">No premium tiers, no vote-locked features, no "upgrade to unlock." Every feature is available to every server, always.</div>
       </div>
-      <div class="bot-actions">
-        <a class="btn btn-accent-pink" href="#" target="_blank" style="background:linear-gradient(135deg,#7c3aed,#f72585);">Add to Server</a>
-        <a class="btn btn-ghost" href="sporkalerts.html">Learn More</a>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <div class="value-title">Privacy by design</div>
+        <div class="value-desc">Neither bot uses Discord's privileged intents. They can't read your messages, see your member list, or track presence — only what you explicitly give them.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛠</div>
+        <div class="value-title">Actively maintained</div>
+        <div class="value-desc">Built from scratch and updated constantly by people who use them daily. Bug reports and feature requests land in our Discord and actually get read.</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -223,23 +349,23 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
         <p>Have a question, suggestion, or found a bug? Reach out through any of our community channels.</p>
       </div>
       <div class="team-links">
-        <a class="team-link" href="https://discord.gg/kvrT4SsuG4" target="_blank">
+        <a class="team-link" href="https://discord.gg/kvrT4SsuG4" target="_blank" rel="noopener">
           <div class="tl-icon">💬</div>
-          <div class="tl-info">
+          <div>
             <span class="tl-name">Support Server</span>
             <span class="tl-desc">Get help, suggest features, report bugs</span>
           </div>
         </a>
-        <a class="team-link" href="https://sporkmp3.net" target="_blank">
+        <a class="team-link" href="https://sporkmp3.net" target="_blank" rel="noopener">
           <div class="tl-icon">🌐</div>
-          <div class="tl-info">
+          <div>
             <span class="tl-name">SporkMP3 Website</span>
             <span class="tl-desc">Full documentation and bot info</span>
           </div>
         </a>
         <a class="team-link" href="terms.html">
           <div class="tl-icon">📄</div>
-          <div class="tl-info">
+          <div>
             <span class="tl-name">Legal</span>
             <span class="tl-desc">Terms of Service &amp; Privacy Policies</span>
           </div>
