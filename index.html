@@ -64,14 +64,16 @@ h1 em{font-style:normal;color:var(--accent);}
 .dm-msg:nth-child(2){animation-delay:.65s;}
 .dm-msg:nth-child(3){animation-delay:1.15s;}
 @keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.dm-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:18px;flex-shrink:0;}
+.dm-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:18px;flex-shrink:0;overflow:hidden;}
+.dm-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
 .dm-avatar.alerts{background:linear-gradient(135deg,#4a1a8c,#7c3aed,#f72585);}
 .dm-avatar.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
 .dm-avatar.user{background:#5865f2;font-size:15px;}
 .dm-content{min-width:0;flex:1;}
 .dm-name-row{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;}
 .dm-name{color:#f2f3f5;font-weight:600;font-size:.85rem;}
-.dm-badge{background:#5865f2;color:#fff;font-size:.58rem;font-weight:600;padding:.06rem .3rem;border-radius:3px;letter-spacing:.02em;vertical-align:middle;}
+.dm-badge{background:#5865f2;color:#fff;font-size:.58rem;font-weight:600;padding:.06rem .32rem;border-radius:3px;letter-spacing:.02em;vertical-align:middle;display:inline-flex;align-items:center;gap:.18rem;}
+.dm-badge::before{content:'✓';font-size:.55rem;}
 .dm-time{color:#80848e;font-size:.66rem;}
 .dm-text{color:#dbdee1;font-size:.83rem;line-height:1.45;margin-top:.1rem;font-weight:300;}
 .dm-mention{background:rgba(88,101,242,.3);color:#c9cdfb;border-radius:3px;padding:0 .18rem;font-weight:500;}
@@ -81,7 +83,19 @@ h1 em{font-style:normal;color:var(--accent);}
 .dm-embed-desc{color:#b5bac1;font-size:.75rem;font-weight:300;line-height:1.45;}
 .dm-progress{margin-top:.55rem;display:flex;align-items:center;gap:.55rem;}
 .dm-track{flex:1;height:5px;background:#1e1f22;border-radius:99px;overflow:hidden;}
-.dm-fill{height:100%;width:42%;background:linear-gradient(90deg,#e8803a,#f0a060);border-radius:99px;}
+.dm-fill{height:100%;width:42%;background:linear-gradient(90deg,#e8803a,#f0a060);border-radius:99px;position:relative;}
+.dm-fill::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:9px;height:9px;background:#f2f3f5;border-radius:50%;box-shadow:0 0 4px rgba(0,0,0,.4);}
+.dm-embed-flex{display:flex;gap:.8rem;align-items:flex-start;}
+.dm-embed-main{flex:1;min-width:0;}
+.dm-thumb{width:54px;height:54px;border-radius:6px;flex-shrink:0;background:linear-gradient(145deg,#e8803a 0%,#a14f8c 45%,#404d72 100%);position:relative;overflow:hidden;}
+.dm-thumb::after{content:'🌆';position:absolute;inset:0;display:grid;place-items:center;font-size:22px;}
+.dm-track-title{color:#f2f3f5;font-weight:700;font-size:.82rem;margin:.3rem 0 .45rem;}
+.dm-label{color:#f2f3f5;font-weight:600;font-size:.72rem;margin-bottom:.15rem;}
+.dm-fields{display:grid;grid-template-columns:1.4fr 1fr;gap:.65rem;margin-top:.55rem;}
+.dm-kv{color:#b5bac1;font-size:.72rem;font-weight:300;line-height:1.5;}
+.dm-kv strong{color:#f2f3f5;font-weight:600;}
+.dm-kv .sep{color:#80848e;padding:0 .15rem;}
+.dm-embed-footer{color:#80848e;font-size:.64rem;margin-top:.55rem;}
 .dm-timestamp{font-family:'DM Mono',monospace;font-size:.62rem;color:#80848e;}
 .dm-buttons{display:flex;gap:.35rem;margin-top:.55rem;}
 .dm-btn{background:#4e5058;color:#fff;border-radius:4px;padding:.22rem .55rem;font-size:.68rem;font-weight:500;}
@@ -111,7 +125,8 @@ h1 em{font-style:normal;color:var(--accent);}
 .bot-card:hover::before{opacity:1;}
 
 .bot-header{display:flex;align-items:center;gap:1rem;position:relative;}
-.bot-avatar{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:26px;flex-shrink:0;}
+.bot-avatar{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:26px;flex-shrink:0;overflow:hidden;}
+.bot-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
 .bot-avatar.mp3{background:linear-gradient(135deg,#404d72,#e8803a);}
 .bot-avatar.alerts{background:linear-gradient(135deg,#a12d74,#eb459e);}
 .bot-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--heading);display:block;}
@@ -194,7 +209,7 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
     <div>
       <p class="eyebrow">SporkBots by SporkTeam</p>
       <h1>Bots built for<br><em>real Discord</em> needs.</h1>
-      <p class="hero-sub">Free, configurable, and built from scratch — because the right tools shouldn't cost a subscription.</p>
+      <p class="hero-sub">Built with love ❤️ — @guntware</p>
       <div class="hero-ctas">
         <a class="btn btn-mp3" href="https://discord.com/discovery/applications/1318106283760680970" target="_blank" rel="noopener">Add SporkMP3</a>
         <a class="btn btn-alerts" href="https://discord.com/discovery/applications/1357218916027338813" target="_blank" rel="noopener">Add SporkAlerts</a>
@@ -210,9 +225,9 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
         </div>
         <div class="dm-body">
           <div class="dm-msg">
-            <div class="dm-avatar alerts">🗓</div>
+            <div class="dm-avatar alerts"><img src="sporkalertsgirl.png" alt="SporkAlerts avatar"></div>
             <div class="dm-content">
-              <div class="dm-name-row"><span class="dm-name">SporkAlerts</span><span class="dm-badge">BOT</span><span class="dm-time">Today at 7:30 PM</span></div>
+              <div class="dm-name-row"><span class="dm-name">SporkAlerts</span><span class="dm-badge">APP</span><span class="dm-time">Today at 7:30 PM</span></div>
               <div class="dm-text"><span class="dm-mention">@Raiders</span> — heads up!</div>
               <div class="dm-embed">
                 <div class="dm-embed-title">⚔️ Raid night starts in 30 minutes</div>
@@ -228,26 +243,43 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
             </div>
           </div>
           <div class="dm-msg">
-            <div class="dm-avatar mp3">🎵</div>
+            <div class="dm-avatar mp3"><img src="sporkmp3girl.png" alt="SporkMP3 avatar"></div>
             <div class="dm-content">
-              <div class="dm-name-row"><span class="dm-name">SporkMP3</span><span class="dm-badge">BOT</span><span class="dm-time">Today at 7:31 PM</span></div>
+              <div class="dm-name-row"><span class="dm-name">SporkMP3</span><span class="dm-badge">APP</span><span class="dm-time">Today at 7:31 PM</span></div>
               <div class="dm-embed orange">
-                <div class="dm-embed-title">Now playing — pre_raid_hype.flac</div>
-                <div class="dm-embed-desc">Requested by spork_enjoyer · original quality, zero compression</div>
-                <div class="dm-progress">
-                  <span class="dm-timestamp">1:42</span>
-                  <div class="dm-track"><div class="dm-fill"></div></div>
-                  <span class="dm-timestamp">4:05</span>
+                <div class="dm-embed-flex">
+                  <div class="dm-embed-main">
+                    <div class="dm-embed-title">▶ Now Playing</div>
+                    <div class="dm-track-title">pre_raid_hype.flac</div>
+                    <div class="dm-label">Progress</div>
+                    <div class="dm-progress" style="margin-top:.15rem;">
+                      <span class="dm-timestamp">1:42</span>
+                      <div class="dm-track"><div class="dm-fill"></div></div>
+                      <span class="dm-timestamp">4:05</span>
+                    </div>
+                    <div class="dm-fields">
+                      <div>
+                        <div class="dm-label">Details</div>
+                        <div class="dm-kv"><strong>Requester</strong><span class="sep">›</span>spork_enjoyer<br><strong>Bitrate</strong><span class="sep">›</span>256kbps</div>
+                      </div>
+                      <div>
+                        <div class="dm-label">Queue</div>
+                        <div class="dm-kv"><strong>Position</strong><span class="sep">›</span>1/4</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dm-thumb" aria-hidden="true"></div>
                 </div>
                 <div class="dm-buttons">
                   <span class="dm-btn">⏮</span><span class="dm-btn blurple">⏸</span><span class="dm-btn">⏭</span><span class="dm-btn">⇄</span>
                 </div>
+                <div class="dm-embed-footer">SporkMP3 • Today at 7:31 PM</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <p class="mock-caption">Live in 2,500+ servers</p>
+      <p class="mock-caption">Live in 3,500+ servers</p>
     </div>
   </div>
 </section>
@@ -255,7 +287,7 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
 <div style="max-width:700px;margin:0 auto;padding:0 1.5rem;">
   <div class="stats">
     <div class="stat"><span class="stat-num">2</span><span class="stat-label">Bots</span></div>
-    <div class="stat"><span class="stat-num">2.5k+</span><span class="stat-label">Servers</span></div>
+    <div class="stat"><span class="stat-num">3.5k+</span><span class="stat-label">Servers</span></div>
     <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
   </div>
 </div>
@@ -267,7 +299,7 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
 
       <div class="bot-card mp3">
         <div class="bot-header">
-          <div class="bot-avatar mp3">🎵</div>
+          <div class="bot-avatar mp3"><img src="sporkmp3girl.png" alt="SporkMP3 avatar"></div>
           <div>
             <span class="bot-name">SporkMP3</span>
             <span class="bot-tagline">Your Discord music companion</span>
@@ -291,7 +323,7 @@ footer p{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);lett
 
       <div class="bot-card alerts">
         <div class="bot-header">
-          <div class="bot-avatar alerts">🗓</div>
+          <div class="bot-avatar alerts"><img src="sporkalertsgirl.png" alt="SporkAlerts avatar"></div>
           <div>
             <span class="bot-name">SporkAlerts</span>
             <span class="bot-tagline">Scheduling made simple</span>
